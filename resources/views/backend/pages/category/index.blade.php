@@ -38,7 +38,7 @@
                                     <td><span class="btn btn-sm btn-{{$category->status == 'active' ? 'success' : 'danger' }}">{{ $category->status }}</span></td>
                                     <td>
                                         <div class="form-group">
-                                            <a href="" class="btn btn-sm btn-info">edit</a>
+                                            <a href="{{ route('edit-category',$category->id) }}" class="btn btn-sm btn-info">edit</a>
                                             <a href="" class="btn btn-sm btn-danger">Delete</a>
                                         </div>
                                     </td>
