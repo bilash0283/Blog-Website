@@ -1,8 +1,7 @@
 @extends('backend.layout.app')
 
 @section('content')
-   <div class="container-fluid">
-
+    <div class="container-fluid">
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -35,11 +34,19 @@
                                 <tr>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
-                                    <td><span class="btn btn-sm btn-{{$category->status == 'active' ? 'success' : 'danger' }}">{{ $category->status }}</span></td>
+                                    <td><span
+                                            class="btn btn-sm btn-{{$category->status == 'active' ? 'success' : 'danger' }}">{{ $category->status }}</span>
+                                    </td>
                                     <td>
                                         <div class="form-group">
-                                            <a href="{{ route('edit-category',$category->id) }}" class="btn btn-sm btn-info">edit</a>
-                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                            <a href="{{ route('edit-category', $category->id) }}"
+                                                class="btn btn-sm btn-info">edit</a>
+                                            <button class="btn btn-sm btn-danger"
+                                                onClick="deleteCategory({{ $category->id }})">Delete</button>
+                                            <form id="deleteConfirm-{{ $category->id }}" class="d-none" action="{{ route('delete-category',$category->id) }}" method="POST">
+                                                @csrf
+                                                
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -49,6 +56,34 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+    <script>
+
+
+        const deleteCategory = (id) => {
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.getElementById('deleteConfirm-'+id);
+                    form.submit()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                }
+            });
+            
+        }
+
+    </script>
 @endsection

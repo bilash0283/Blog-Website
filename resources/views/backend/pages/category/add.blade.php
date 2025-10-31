@@ -28,7 +28,7 @@
                                 <option value="inactive">Inactive</option>
                             </select>
                         </div>
-                        <button class="btn btn-primary ">Add</button>
+                        <button type="submit" class="btn btn-primary ">Add</button>
                     </form>
                 </div>
             </div>

@@ -27,9 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/category', [CategoryController::class, 'category'])->name('category');
-    Route::get('/add-category', [CategoryController::class, 'add_category'])->name('add-category');
-    Route::post('/store-category', [CategoryController::class, 'store_category'])->name('store-category');
-    Route::get('/edit-category/{id}', [CategoryController::class, 'edit_category'])->name('edit-category');
+    Route::get('/add-category', [CategoryController::class, 'addCategory'])->name('add-category');
+    Route::post('/store-category', [CategoryController::class, 'storeCategory'])->name('store-category');
+    Route::get('/edit-category/{id}', [CategoryController::class, 'editCategory'])->name('edit-category');
+    Route::post('/update-category/{id}', [CategoryController::class, 'updateCategory'])->name('update-category');
+    Route::post('/delete-category/{id}', [CategoryController::class, 'deleteCategory'])->name('delete-category');
 
     Route::get('/post', [PostController::class, 'post'])->name('post');
     Route::get('/add-post', [PostController::class, 'add_post'])->name('add-post');

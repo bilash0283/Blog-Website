@@ -13,22 +13,22 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <form action="{{ route('store-category') }}" method="POST">
+                    <form action="{{ route('update-category',$category->id) }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <input type="name" class="form-control form-control-user" id="exampleInputEmail"
                                 placeholder="Name" name="name" value="{{ $category->name }}" required>
                         </div>
                         <div class="form-group">
-                            <textarea name="description" placeholder="Description" class="form-control form-control-user" id="" rows="5" required></textarea>
+                            <textarea name="description" placeholder="Description" class="form-control form-control-user" id="" rows="5" required>{{ $category->description }}</textarea>
                         </div>
                         <div class="form-group">
                             <select name="status" class="form-control form-control-user " id="" required>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
+                                <option value="active" {{ $category->status == 'active' ? 'selected' : '' }}>Active</option>
+                                <option value="inactive" {{ $category->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
                             </select>
                         </div>
-                        <button class="btn btn-primary ">Add</button>
+                        <button class="btn btn-primary ">Update</button>
                     </form>
                 </div>
             </div>

@@ -14,14 +14,14 @@ class CategoryController extends Controller
         return view('backend.pages.category.index',['categoris' => $category]);
     }
 
-    public function add_category()
+    public function addCategory()
     {
         return view('backend.pages.category.add');
     }
 
-    public function store_category(Request $request)
+    public function storeCategory(Request $request)
     {
-        $category = Category::create([
+        Category::create([
             'name' => $request->name,
             'description' => $request->description,
             'status' => $request->status
@@ -33,11 +33,34 @@ class CategoryController extends Controller
 
     }
 
-    public function edit_category(Request $request,$id)
+    public function editCategory(Request $request,$id)
     {
         $category = Category::find($id);
         return view('backend.pages.category.edit',['category' => $category]);
     }
 
+    public function updateCategory(Request $request , $id)
+    {
+        
+        $category = Category::find($id);
+
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'status' => $request->status,
+        ]);
+
+        flash()->success('Category Update Successfull');
+        return redirect()->route('category');
+    }
+
+    public function deleteCategory($id)
+    {
+        $Category = Category::find($id);
+        $Category->delete();
+
+        flash()->success('Category Delete Successfull');
+        return redirect()->route('category');
+    }
 
 }
