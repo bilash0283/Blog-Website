@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function post()
     {
-        $posts = Post::all();
+        $posts = Post::with('category')->get();
         return view('backend.pages.post.index',['posts' => $posts]);
     }
 

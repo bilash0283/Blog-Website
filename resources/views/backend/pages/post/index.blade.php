@@ -39,9 +39,9 @@
                                     <tr>
                                         <td><img src="post_img/{{ $post->post_img }}" alt="" style="width:50px;height:50px;border-radius:50%;"></td>
                                         <td>{{ $post->name }}</td>
-                                        <td>{{ $post->description }}</td>
+                                        <td>{{ Str::limit( $post->description,40) }}</td>
                                         <td>{{$post->status}}</td>
-                                        <td>{{ $post->category_id }}</td>
+                                        <td>{{ $post->category->name }}</td>
                                         <td>
                                             <div class="form-group">
                                                 <a href="" class="btn btn-sm btn-info">edit</a>
