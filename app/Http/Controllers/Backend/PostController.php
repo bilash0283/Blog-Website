@@ -79,8 +79,7 @@ class PostController extends Controller
             @unlink($post->post_img);
         }
         $post->delete();
-
-
+        flash()->success('Post Delete Successfull');
         return redirect()->route('post');
     }
 
