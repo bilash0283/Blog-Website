@@ -23,11 +23,20 @@ class PostController extends Controller
 
     public function store_post(Request $request)
     {
+
+        $this->validate($request, [
+            'post_img' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+        ]);
+
+        function uploadImage($file,$update = null){
+            return $file ? $file->store('/images', ['disk' =>'my_files']) : $update ?? 'images/default.jpg';
+        }
+
         $post = Post::create([
             'name' => $request->name,
             'description' => $request->description,
             'status' => $request->status,
-            'post_img' => $request->file('post_img')->storePublicly('post_img'),
+            'post_img' => uploadImage($request->file(key: 'post_img')),
             'category_id' => $request->category_id
         ]);
 

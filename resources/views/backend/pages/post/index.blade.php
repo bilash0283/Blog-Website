@@ -37,7 +37,7 @@
                             <tbody>
                                 @foreach ($posts as $post)
                                     <tr>
-                                        <td><img src="post_img/{{ $post->post_img }}" alt="" style="width:50px;height:50px;border-radius:50%;"></td>
+                                        <td><img src="{{ $post->post_img }}" alt="" style="width:50px;height:50px;border-radius:50%;"></td>
                                         <td>{{ $post->name }}</td>
                                         <td>{{ Str::limit( $post->description,40) }}</td>
                                         <td>{{$post->status}}</td>
@@ -45,7 +45,7 @@
                                         <td>
                                             <div class="form-group">
                                                 <a href="" class="btn btn-sm btn-info">edit</a>
-                                                <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                <button id="delete"187 class="btn btn-sm btn-danger">Delete</button>
                                             </div>
                                         </td>
                                     </tr>
