@@ -24,7 +24,7 @@ class PostController extends Controller
     public function store_post(Request $request)
     {
 
-        $this->validate($request, [
+        $request->validate( [
             'post_img' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
