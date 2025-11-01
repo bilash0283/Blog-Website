@@ -45,7 +45,6 @@
                                                 onClick="deleteCategory({{ $category->id }})">Delete</button>
                                             <form id="deleteConfirm-{{ $category->id }}" class="d-none" action="{{ route('delete-category',$category->id) }}" method="POST">
                                                 @csrf
-                                                
                                             </form>
                                         </div>
                                     </td>

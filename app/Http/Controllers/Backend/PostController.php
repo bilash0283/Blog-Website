@@ -71,4 +71,17 @@ class PostController extends Controller
         
     }
 
+    public function deletePost( $id)
+    {
+
+        $post = Post::find(id: $id);
+        if($post->post_img){
+            @unlink($post->post_img);
+        }
+        $post->delete();
+
+
+        return redirect()->route('post');
+    }
+
 }

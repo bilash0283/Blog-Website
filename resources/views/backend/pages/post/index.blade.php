@@ -45,7 +45,10 @@
                                         <td>
                                             <div class="form-group">
                                                 <a href="{{ route('edit-post',$post->id) }}" class="btn btn-sm btn-info">edit</a>
-                                                <button id="delete"187 class="btn btn-sm btn-danger">Delete</button>
+                                                <button onclick="deletePost({{ $post->id }})" class="btn btn-sm btn-danger">Delete</button>
+                                                <form id="deleteConfirm-{{ $post->id }}" method="POST"  action="{{ route('delete-post',$post->id) }}" class="d-none">
+                                                    @csrf
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -55,6 +58,30 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
+
+<script>
+    const deletePost = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('deleteConfirm-'+id);
+                form.submit()
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    }
+</script>
 @endsection
