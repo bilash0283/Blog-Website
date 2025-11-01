@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <form action="{{ route('store-post') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('update-post',$post->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <input type="name" class="form-control form-control-user" id="exampleInputEmail"
@@ -44,7 +44,7 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="btn btn-primary ">Add</button>
+                        <button type="submit" class="btn btn-primary ">Update</button>
                     </form>
                 </div>
             </div>

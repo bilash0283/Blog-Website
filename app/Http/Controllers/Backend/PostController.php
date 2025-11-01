@@ -51,5 +51,24 @@ class PostController extends Controller
         return view('backend.pages.post.edit',['post' => $posts,'categoris' => $categoryes]);
     }
 
+    public function updatePost(Request $request,$id)
+    {
+        function uploadImage($file,$update = null){
+            return $file ? $file->store('/images', ['disk' =>'my_files']) : $update ?? 'images/default.jpg';
+        }
+
+        $post = Post::find($id);
+        $post->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'status' => $request->status,
+            'post_img' => uploadImage($request->file(key: 'post_img'),$post->post_img),
+            'category_id' => $request->category_id
+        ]);
+
+        flash()->success('Post Update Successfull');
+        return redirect()->route('post');
+        
+    }
 
 }
