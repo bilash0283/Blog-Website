@@ -44,5 +44,12 @@ class PostController extends Controller
         return redirect()->route('post');
     }
 
+    public function editPost($id)
+    {
+        $posts = Post::find($id);
+        $categoryes = Category::where('status','active')->get();
+        return view('backend.pages.post.edit',['post' => $posts,'categoris' => $categoryes]);
+    }
+
 
 }

@@ -44,7 +44,7 @@
                                         <td>{{ $post->category->name }}</td>
                                         <td>
                                             <div class="form-group">
-                                                <a href="" class="btn btn-sm btn-info">edit</a>
+                                                <a href="{{ route('edit-post',$post->id) }}" class="btn btn-sm btn-info">edit</a>
                                                 <button id="delete"187 class="btn btn-sm btn-danger">Delete</button>
                                             </div>
                                         </td>
