@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-post/{id}', [PostController::class, 'updatePost'])->name('update-post');
     Route::post('/delete-post/{id}', [PostController::class, 'deletePost'])->name('delete-post');
 
-    Route::get('/slider',);
+    
 
 
 
