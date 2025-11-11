@@ -13,11 +13,11 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <form action="{{ route('Social-Media.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('Social-Media.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <input type="name" class="form-control form-control-user" id="exampleInputEmail"
-                                placeholder="Name" name="name">
+                                placeholder="Name" name="title">
                         </div>
                         <div class="form-group">
                             <input type="url" name="link" class="form-control form-control-user" placeholder="Social Media URL">
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label for="post_img">Social Media Icon</label>
                             <input type="file" class="form-control form-control-user" id="exampleInputEmail"
-                                 name="post_img">
+                                 name="icon">
                         </div>
 
                         <button type="submit" class="btn btn-info ">Add</button>

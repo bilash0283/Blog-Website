@@ -28,7 +28,16 @@ class SocialMediaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SocialMedia::create([
+            'title' => $request->title,
+            'link' => $request->link,
+            'status' => $request->status,
+            'icon' => $request->icon
+        ]);
+
+        flash()->success('Social Media Add Successfull');
+        return redirect()->route('Social-Media.index');
+
     }
 
     /**
