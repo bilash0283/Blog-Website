@@ -32,7 +32,7 @@ class PostController extends Controller
             return $file ? $file->store('/images', ['disk' =>'my_files']) : $update ?? 'images/default.jpg';
         }
 
-        $post = Post::create([
+        Post::create([
             'name' => $request->name,
             'description' => $request->description,
             'status' => $request->status,
