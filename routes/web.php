@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Fontend\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialMediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'home'])->name('home');
@@ -40,9 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-post/{id}', [PostController::class, 'updatePost'])->name('update-post');
     Route::post('/delete-post/{id}', [PostController::class, 'deletePost'])->name('delete-post');
 
-    
-
-
+    Route::resource('Social-Media',SocialMediaController::class);
 
 
 });
