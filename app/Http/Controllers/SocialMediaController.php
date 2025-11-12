@@ -12,7 +12,8 @@ class SocialMediaController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.socialmedia.index');
+        $socials = SocialMedia::all();
+        return view('backend.pages.socialmedia.index',['socials' => $socials]);
     }
 
     /**

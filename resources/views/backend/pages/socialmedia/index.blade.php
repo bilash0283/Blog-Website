@@ -33,9 +33,15 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                @foreach ($socials as $social)
                                 <tr>
-                                    <td>name</td>
+                                    <td><img src="{{ asset($social->icon) }}" alt=""></td>
+                                    <td>{{ $social->title }}</td>
+                                    <td>{{ $social->link }}</td>
+                                    <td>{{ $social->status }}</td>
+                                    <td>edit</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
