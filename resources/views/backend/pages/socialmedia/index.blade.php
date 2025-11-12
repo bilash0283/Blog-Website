@@ -35,11 +35,17 @@
                             <tbody>
                                 @foreach ($socials as $social)
                                 <tr>
-                                    <td><img src="{{ asset($social->icon) }}" alt=""></td>
+                                    <td><img src="{{ asset($social->icon) }}" style="width:50px;height:50px;border-radius:50%;" alt=""></td>
                                     <td>{{ $social->title }}</td>
                                     <td>{{ $social->link }}</td>
-                                    <td>{{ $social->status }}</td>
-                                    <td>edit</td>
+                                    <td>{{ $social->status }}</td>1
+                                    <td>
+                                        <a href="{{ route('edit-post',$social->id) }}" class="btn btn-sm btn-info">edit</a>
+                                        <button onclick="deletePost({{ $social->id }})" class="btn btn-sm btn-danger">Delete</button>
+                                        <form id="deleteConfirm-{{ $social->id }}" method="POST"  action="{{ route('delete-post',$social->id) }}" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
