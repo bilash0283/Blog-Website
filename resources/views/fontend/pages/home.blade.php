@@ -81,11 +81,12 @@
           <div class="row g-5">
             <div class="col-lg-4">
 
+            @foreach ($posts as $post)
               <div class="post-entry lg">
-                <a href="blog-details.html"><img src="{{ asset('/') }}assets/fontend/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
-                <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                <h2><a href="blog-details.html">11 Work From Home Part-Time Jobs You Can Do Now</a></h2>
-                <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos</p>
+                <a href="blog-details.html"><img src="{{ asset($post->post_img) }}" alt="" class="img-fluid"></a>
+                <div class="post-meta"><span class="date">{{ $post->category->name }}</span> <span class="mx-1">•</span> <span>{{ $post->updated_at->format('d M, Y h:i A') }}</span></div>
+                <h2><a href="blog-details.html">{{ $post->name }}</a></h2>
+                <p class="mb-4 d-block">{{ $post->description }}</p>
 
                 <div class="d-flex align-items-center author">
                   <div class="photo"><img src="{{ asset('/') }}assets/fontend/img/person-1.jpg" alt="" class="img-fluid"></div>
@@ -94,6 +95,7 @@
                   </div>
                 </div>
               </div>
+            @endforeach
 
             </div>
 

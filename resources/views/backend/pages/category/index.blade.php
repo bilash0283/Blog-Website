@@ -33,7 +33,7 @@
                             @foreach ($categoris as $category)
                                 <tr>
                                     <td>{{ $category->name }}</td>
-                                    <td>{{ $category->description }}</td>
+                                    <td>{{ Str::limit($category->description, 50, ' ...')   }}</td>
                                     <td><span
                                             class="btn btn-sm btn-{{$category->status == 'active' ? 'success' : 'danger' }}">{{ $category->status }}</span>
                                     </td>
