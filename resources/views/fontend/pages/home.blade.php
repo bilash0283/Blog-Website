@@ -91,7 +91,7 @@
                 <div class="d-flex align-items-center author">
                   <div class="photo"><img src="{{ asset('/') }}assets/fontend/img/person-1.jpg" alt="" class="img-fluid"></div>
                   <div class="name">
-                    <h3 class="m-0 p-0">Cameron Williamson</h3>
+                    <h3 class="m-0 p-0">{{ $post->user->name }}</h3>
                   </div>
                 </div>
               </div>

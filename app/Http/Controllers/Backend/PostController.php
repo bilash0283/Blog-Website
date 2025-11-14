@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -37,7 +38,8 @@ class PostController extends Controller
             'description' => $request->description,
             'status' => $request->status,
             'post_img' => uploadImage($request->file(key: 'post_img')),
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'author' => Auth()->id(),
         ]);
 
         flash()->success('Post created successfully!');
@@ -63,7 +65,8 @@ class PostController extends Controller
             'description' => $request->description,
             'status' => $request->status,
             'post_img' => uploadImage($request->file(key: 'post_img'),$post->post_img),
-            'category_id' => $request->category_id
+            'category_id' => $request->category_id,
+            'author' => Auth()->id(),
         ]);
 
         flash()->success('Post Update Successfull');

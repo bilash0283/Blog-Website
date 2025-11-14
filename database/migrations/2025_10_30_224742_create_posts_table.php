@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('status');
             $table->string('post_img')->nullable();
+            $table->foreignId('author')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
